@@ -1,0 +1,83 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrahead %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}">
+{% endblock extrahead %}
+
+{% block title %}
+  {{ event.title }}签到情况 {{ block.super }}
+{% endblock title %}
+
+{% block branding %}
+  <h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+      CST党员之家
+    </a>
+  </h1>
+{% endblock branding %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+  <a href="/admin/">首页</a>
+  › <a href="/admin/home/">Home</a>
+  › <a href="/admin/home/event/">活动</a>
+  › {{ event.title }}
+  </div>
+{% endblock breadcrumbs %}
+
+{% block content %}
+  <div id="content" class="flex">
+    <h1>{{ event.title }} | 签到情况</h1>
+    <div id="content-main">
+      <div class="results">
+      <table id="result_list" style="width: 800px;">
+        <thead>
+          <tr>
+            <th scope="col" class="sortable">
+              <div class="text">
+                <a href="?o=1">签到情况</a>
+              </div>
+              <div class="clear"></div>
+            </th>
+            <th scope="col" class="sortable">
+              <div class="text">
+                <a href="?o=2">名单</a>
+              </div>
+              <div class="clear"></div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row1">
+            <th style="padding: 20px;">
+              已签到
+            </th>
+            <td>
+              <ul>
+                {% for attendee in attendees %}
+                  <li>{{ attendee }} {{ attendee.profile.full_name }}</li>
+                {% empty %}
+                  -
+                {% endfor %}
+              </ul>
+            </td>
+          </tr>
+          <tr class="row2">
+            <th style="padding: 20px;">未签到</th>
+            <td>
+              <ul>
+                {% for absentee in absentees %}
+                  <li>{{ absentee }} {{ absentee.profile.full_name }}</li>
+                {% empty %}
+                  -
+                {% endfor %}
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+{% endblock content %}
