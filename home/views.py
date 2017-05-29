@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
 
 from rest_framework import generics
 from rest_framework.views import APIView
@@ -15,6 +16,10 @@ from .serializers import (EventListSerializer,
                           AttendEventSerializer,
                           NewsListSerializer,
                           NewsDetailSerializer)
+
+
+def welcome(request):
+    return HttpResponse("Welcome to CST Home!")
 
 
 class EventListView(generics.ListAPIView):
