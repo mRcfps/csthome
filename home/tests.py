@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.authtoken.models import Token
-from rest_framework.settings import api_settings
 
 from .models import Event, News
 
@@ -32,19 +31,15 @@ class NewsTests(APITestCase):
         """Ensure we can get a list of news."""
         url = reverse('home:news-list')
         response = self.client.get(url)
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['count'], TEST_NEWS_NUM)
-
-        # Check if the num of news is equal to PAGE SIZE in settings
-        self.assertEqual(len(response.data['results']), api_settings.PAGE_SIZE)
-
-        # Check if the response has `next` field
-        self.assertNotEqual(response.data['next'], None)
+        self.assertEqual(len(response.data), TEST_NEWS_NUM)
 
     def test_get_news_by_id(self):
         """Ensure we can get news by its id."""
         url = reverse('home:news-detail', kwargs={'pk': self.test_news.id})
         response = self.client.get(url)
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['id'], self.test_news.id)
 

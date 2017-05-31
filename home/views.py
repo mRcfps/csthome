@@ -26,7 +26,6 @@ class EventListView(generics.ListAPIView):
     """A view that lists all events."""
 
     serializer_class = EventListSerializer
-    pagination_class = None
 
     def get_queryset(self):
         """If `active` or `headline` query parameters is given,
