@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^home/', include('home.urls', namespace='home')),
     url(r'^users/', include('users.urls', namespace='users')),
     url(r'^feedback/', include('feedback.urls', namespace='feedback')),
+    url(r'^push/', include('push.urls', namespace='push')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', welcome),

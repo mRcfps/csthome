@@ -1,0 +1,36 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}
+  消息推送成功 {{ block.super }}
+{% endblock title %}
+
+{% block branding %}
+  <h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+      CST党员之家
+    </a>
+  </h1>
+{% endblock branding %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+  <a href="/admin/">首页</a>
+  › <a href="/admin/push/">消息推送</a>
+  › <a href="/admin/push/pushnotification/">推送通知</a>
+  </div>
+{% endblock breadcrumbs %}
+
+{% block content %}
+  {% if push.has_pushed %}
+    <h1>消息推送成功！</h1>
+  {% else %}
+    <h1>消息推送失败！</h1>
+    <p>可能是因为网络连接原因或推送服务器出现了一点故障。您可以选择 <a href="{% url 'push:push-notification' push.id %}">重新推送</a>。</p>
+  {% endif %}
+
+  <br><br><hr><br>
+  <a href="/admin/push/pushnotification/">
+    <div class="button" style="width: 100px; text-align: center;">返回</div>
+  </a>
+{% endblock content %}
