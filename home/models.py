@@ -18,6 +18,7 @@ class Event(models.Model):
     )
 
     class Meta:
+        ordering = ('created',)
         verbose_name = '活动'
         verbose_name_plural = verbose_name
 
@@ -34,6 +35,7 @@ class News(models.Model):
     created = models.DateField(auto_now_add=True, verbose_name='创建时间')
 
     class Meta:
+        ordering = ('created',)
         verbose_name = '新闻'
         verbose_name_plural = verbose_name
 

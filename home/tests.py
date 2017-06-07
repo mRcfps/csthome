@@ -35,6 +35,7 @@ class NewsTests(APITestCase):
         """Ensure we can get a list of news."""
         url = reverse('home:news-list')
         response = self.client.get(url)
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], TEST_NEWS_NUM)
 
@@ -48,6 +49,7 @@ class NewsTests(APITestCase):
         """Ensure we can get news by its id."""
         url = reverse('home:news-detail', kwargs={'pk': self.test_news.id})
         response = self.client.get(url)
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['id'], self.test_news.id)
 
@@ -79,6 +81,7 @@ class EventTests(APITestCase):
 
         url = reverse('home:event-list') + '?headline=true'
         response = self.client.get(url)
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], TEST_HEADLINE_EVENTS_NUM)
 
@@ -87,6 +90,7 @@ class EventTests(APITestCase):
 
         url = reverse('home:event-list') + '?active=true'
         response = self.client.get(url)
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data['results']), api_settings.PAGE_SIZE)
 
@@ -95,6 +99,7 @@ class EventTests(APITestCase):
 
         url = reverse('home:event-detail', kwargs={'pk': self.test_event.id})
         response = self.client.get(url)
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['id'], self.test_event.id)
 
@@ -106,6 +111,7 @@ class EventTests(APITestCase):
         client.force_authenticate(user=user)
         url = reverse('home:attend-event', kwargs={'pk': self.test_event.id})
         response = client.get(url)
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Check if the user is contained in test event's attendees

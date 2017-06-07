@@ -6,7 +6,8 @@ class EventListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ('id', 'title', 'photo', 'created')
+        fields = ('id', 'title', 'photo', 'created',
+                  'is_active', 'attendees')
 
 
 class EventDetailSerializer(serializers.ModelSerializer):
@@ -14,13 +15,6 @@ class EventDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ('id', 'title', 'photo', 'body', 'created')
-
-
-class AttendEventSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Event
-        fields = ('id', 'attendees')
 
 
 class NewsListSerializer(serializers.ModelSerializer):

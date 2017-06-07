@@ -5,6 +5,6 @@ from . import views
 urlpatterns = [
     url(
         r'^push-notifications/(?P<push_id>\d+)/$',
-        views.admin_send_push_noitifications,
+        views.admin_send_push_notifications,
         name='push-notification'),
 ]

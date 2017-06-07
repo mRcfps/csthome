@@ -12,7 +12,6 @@ from rest_framework.response import Response
 from .models import Event, News
 from .serializers import (EventListSerializer,
                           EventDetailSerializer,
-                          AttendEventSerializer,
                           NewsListSerializer,
                           NewsDetailSerializer)
 

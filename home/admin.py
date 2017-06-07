@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import reverse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
+
+from rest_framework.authtoken.models import Token
 
 from .models import Event, News
 
@@ -19,7 +21,7 @@ view_attendance.allow_tags = True
 
 class EventAdmin(admin.ModelAdmin):
 
-    list_display = ('title', 'created', 'is_active',
+    list_display = ('id', 'title', 'created', 'is_active',
                     'is_headline', view_attendance)
     search_fields = ('title',)
     date_hierarchy = 'created'
@@ -42,3 +44,7 @@ admin.site.register(News, NewsAdmin)
 admin.site.site_header = 'CST党员之家'
 admin.site.site_title = '后台管理'
 admin.site.site_url = None
+
+# Unregister default apps
+admin.site.unregister(Group)
+admin.site.unregister(Token)

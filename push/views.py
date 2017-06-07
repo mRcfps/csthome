@@ -14,7 +14,7 @@ PUSH_URL   = 'https://api.leancloud.cn/1.1/push'
 
 
 @staff_member_required
-def admin_send_push_noitifications(request, push_id):
+def admin_send_push_notifications(request, push_id):
     """Send push notifications via admin with one click."""
 
     push = get_object_or_404(PushNotification, id=push_id)
