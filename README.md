@@ -2,7 +2,7 @@
 
 进入项目主目录，依次运行如下命令。
 
-```
+```bash
 $ python3 -m venv venv
 $ source venv/bin/activate
 (venv)$ pip install -r requirements.txt
@@ -22,3 +22,11 @@ $ source venv/bin/activate
 然后将 docs 中的 `api-docs.yaml` 复制进在线编辑器中，即可查看渲染后的文档。
 
 所有的 `Response` 返回结果（`JSON` 格式）均在 docs/responseExamples 中。
+
+# 使用 Docker
+
+确保已安装docker和docker-compose。
+
+```bash
+$ docker-compose build && docker-compose up -d
+```
