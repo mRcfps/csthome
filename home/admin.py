@@ -1,7 +1,6 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group, User
 from django.urls import reverse
-from django.contrib.auth.models import User, Group
-
 from rest_framework.authtoken.models import Token
 
 from .models import Event, News

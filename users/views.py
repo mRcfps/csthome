@@ -1,15 +1,14 @@
 from django.contrib.auth.models import User
-
 from rest_framework import generics
-from rest_framework.parsers import MultiPartParser
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.serializers import AuthTokenSerializer
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Profile
-from .serializers import UserSerializer, ProfileSerializer
+from .serializers import ProfileSerializer, UserSerializer
 
 
 class UserLoginView(APIView):

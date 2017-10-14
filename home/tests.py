@@ -1,10 +1,9 @@
-from django.urls import reverse
 from django.contrib.auth.models import User
-
+from django.urls import reverse
 from rest_framework import status
-from rest_framework.test import APITestCase, APIClient
 from rest_framework.authtoken.models import Token
 from rest_framework.settings import api_settings
+from rest_framework.test import APIClient, APITestCase
 
 from .models import Event, News
 

@@ -1,19 +1,16 @@
-from django.contrib.auth.models import User
 from django.contrib.admin.views.decorators import staff_member_required
-from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 from django.http import HttpResponse
-
+from django.shortcuts import get_object_or_404, render
 from rest_framework import generics
-from rest_framework.views import APIView
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Event, News
-from .serializers import (EventListSerializer,
-                          EventDetailSerializer,
-                          NewsListSerializer,
-                          NewsDetailSerializer)
+from .serializers import (EventDetailSerializer, EventListSerializer,
+                          NewsDetailSerializer, NewsListSerializer)
 
 
 def welcome(request):
