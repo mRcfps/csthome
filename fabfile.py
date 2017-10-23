@@ -10,4 +10,4 @@ def deploy_with_private_key():
 
 
 def deploy():
-    locals("fab deploy_with_private_key -i pf.pem")
+    local("fab deploy_with_private_key -i pf.pem")
