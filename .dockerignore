@@ -1,0 +1,5 @@
+fabfile.py
+static/*
+media/*
+.coveragerc
+db.sqlite3

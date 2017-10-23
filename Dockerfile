@@ -2,17 +2,14 @@ FROM python:3.5
 
 ENV PYTHONBUFFERED 1
 
-# RUN apt-get update \
-#     && apt-get install -y sqlite3 \
-#     && rm -rf /var/lib/apt/lists/*
+RUN mkdir /src
+WORKDIR /src
+ADD . /src/
 
-RUN mkdir /csthome
-WORKDIR /csthome
-ADD . /csthome/
-
-RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple/ \
     -r requirements.txt \
-    && python manage.py migrate
+    && python manage.py migrate \
+    && python manage.py collectstatic
 
-EXPOSE 8000
-CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
+EXPOSE 9000
+CMD [ "gunicorn", "csthome.wsgi", "-b", "0.0.0.0:8000" ]
