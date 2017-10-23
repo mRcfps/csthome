@@ -1,6 +1,19 @@
+# Python JIT caches
 __pycache__
 *.pyc
+
+# Database files
 db.sqlite3
+
+# Static files
 static/
+
+# Media files
+media/
+
 .vscode/
 venv/
+
+# Coverage.py related
+.coverage
+htmlcov/

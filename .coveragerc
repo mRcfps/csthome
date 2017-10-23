@@ -1,0 +1,3 @@
+[run]
+include = csthome/*, feedback/*, home/*, users/*
+omit = *migrations*, *tests*, *admin*
