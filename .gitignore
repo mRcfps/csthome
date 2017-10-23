@@ -17,3 +17,6 @@ venv/
 # Coverage.py related
 .coverage
 htmlcov/
+
+# SSH private key
+pf.pem
