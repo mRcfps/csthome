@@ -1,12 +1,15 @@
+from __future__ import with_statement
+
 from fabric.api import *
 
 env.hosts = ['root@60.205.183.134']
 
 
 def deploy_with_private_key():
-    run("git pull")
-    run("docker-compose down")
-    run("docker-compose up --build -d")
+    with cd("csthome/"):
+        run("git pull")
+        run("docker-compose down")
+        run("docker-compose up --build -d")
 
 
 def deploy():
