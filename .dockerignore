@@ -3,3 +3,5 @@ static/*
 media/*
 .coveragerc
 db.sqlite3
+*.pyc
+pf.pem
