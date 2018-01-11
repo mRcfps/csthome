@@ -10,6 +10,7 @@ def deploy_with_private_key():
         run("git pull")
         run("docker-compose down")
         run("docker-compose up --build -d")
+        run("docker exec csthome_web_1 python manage.py migrate")
 
 
 def deploy():
