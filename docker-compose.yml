@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  db:
+    image: postgres:9.6
+  web:
+    build: .
+    volumes:
+      - .:/src
+    depends_on:
+      - db
   proxy:
     image: nginx:1.13
     ports:
@@ -10,7 +18,3 @@ services:
       - .:/src
     depends_on:
       - web
-  web:
-    build: .
-    volumes:
-      - .:/src
