@@ -15,6 +15,7 @@ media/
 venv/
 
 # Coverage.py related
+.coveragerc
 .coverage
 htmlcov/
 
@@ -23,3 +24,4 @@ pf.pem
 
 # db migrations
 */migrations/*
+!*/migrations/__init__.py

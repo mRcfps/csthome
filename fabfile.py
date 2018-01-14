@@ -10,8 +10,18 @@ def deploy_with_private_key():
         run("git pull")
         run("docker-compose down")
         run("docker-compose up --build -d")
-        run("docker exec csthome_web_1 python manage.py makemigrations")
-        run("docker exec csthome_web_1 python manage.py migrate")
+
+        # Keep trying until db is ready
+        while True:
+            with settings(warn_only=True):
+                result = run("docker exec csthome_web_1 python manage.py makemigrations")
+            if not result.failed:
+                # db is ready, so migrate and exit the loop
+                run("docker exec csthome_web_1 python manage.py migrate")
+                break
+            else:
+                # Sleep for a while and try again
+                run("sleep 3")
 
 
 def deploy():
