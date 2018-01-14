@@ -8,8 +8,8 @@ env.hosts = ['root@60.205.183.134']
 def deploy_with_private_key():
     with cd("csthome/"):
         run("git pull")
-        run("docker-compose down")
-        run("docker-compose up --build -d")
+        run("docker-compose build --no-cache")
+        run("docker-compose up --force-recreate")
 
         # Keep trying until db is ready
         while True:
