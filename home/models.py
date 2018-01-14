@@ -9,7 +9,7 @@ class Event(models.Model):
     title = models.CharField(max_length=100, verbose_name='标题')
     photo = models.ImageField(upload_to='event', blank=True, verbose_name='照片')
     body = RichTextField(verbose_name='正文')
-    created = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    created = models.DateField(auto_now_add=True, verbose_name='创建时间')
     is_headline = models.BooleanField(default=False, verbose_name='是否需要首页轮播')
     is_active = models.BooleanField(default=False, verbose_name='是否需要签到')
     attendees = models.ManyToManyField(
