@@ -1,32 +1,26 @@
-# 如何开启开发服务器
+# CSTHome
 
-进入项目主目录，依次运行如下命令。
+东华大学党员之家 APP 后端。
 
-```bash
-$ python3 -m venv venv
-$ source venv/bin/activate
-(venv)$ pip install -r requirements.txt
-(venv)$ python manage.py runserver
-```
+## 本地运行
 
-如果需要退出虚拟环境，输入 `deactivate` 命令即可。
-
-# 进入后台管理界面
-
-开启开发服务器后，输入 [localhost:8000/admin/](localhost:8000/admin/) 即可进入后台管理系统。管理员账号是 `admin` ，密码是 `tomismyson` 。
-
-# 查看API文档
-
-打开Swagger Editor在线编辑器 [http://editor.swagger.io/#](http://editor.swagger.io/#)。
-
-然后将 docs 中的 `api-docs.yaml` 复制进在线编辑器中，即可查看渲染后的文档。
-
-所有的 `Response` 返回结果（`JSON` 格式）均在 docs/responseExamples 中。
-
-# 使用 Docker
-
-确保已安装docker和docker-compose。
+确保已经配置好 docker。如果没有，其参考[这里](https://docs.docker.com/engine/installation/)。
 
 ```bash
-$ docker-compose build && docker-compose up -d
+$ docker-compose up --build
 ```
+
+- 后台管理页面请访问 [http://localhost:12138/admin](http://localhost:12138/admin) 。
+
+- API 文档请访问 [http://localhost:12138/docs](http://localhost:12138/docs) 。
+
+## 远程部署
+
+本项目使用的是 Fabric 进行自动化部署。先确保安装 Fabric (Python 2 的一个库），然后进入到项目根目录执行自动化任务。
+
+```bash
+$ pip install fabric
+$ fab deploy
+```
+
+需要注意的是，如果没有云主机的私钥文件是无法进行远程登录的。
