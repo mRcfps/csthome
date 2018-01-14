@@ -5,6 +5,7 @@ services:
     image: postgres:9.6
   web:
     build: .
+    name: csthome_web
     volumes:
       - .:/src
     depends_on:
