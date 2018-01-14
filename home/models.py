@@ -15,6 +15,7 @@ class Event(models.Model):
     attendees = models.ManyToManyField(
         User, blank=True, verbose_name='参与者', editable=False
     )
+    some_field = models.CharField(default='test', max_length=50)
 
     class Meta:
         ordering = ('created',)
