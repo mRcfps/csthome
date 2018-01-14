@@ -20,3 +20,6 @@ htmlcov/
 
 # SSH private key
 pf.pem
+
+# db migrations
+*/migrations/*
