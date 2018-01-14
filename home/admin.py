@@ -20,7 +20,7 @@ view_attendance.allow_tags = True
 
 class EventAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'title', 'created', 'is_active',
+    list_display = ('title', 'created', 'is_active',
                     'is_headline', view_attendance)
     search_fields = ('title',)
     date_hierarchy = 'created'
