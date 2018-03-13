@@ -1,10 +1,10 @@
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    url(
-        r'^push-notifications/(?P<push_id>\d+)/$',
+    path(
+        'push-notifications/<int:push_id>/$',
         views.admin_send_push_notifications,
         name='push-notification'),
 ]

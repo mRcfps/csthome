@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.FeedbackCreateView.as_view(), name='send-feedback'),
+    path('', views.FeedbackCreateView.as_view(), name='send-feedback'),
 ]

@@ -1,18 +1,20 @@
 from django.conf import settings
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.conf.urls.static import static
 from django.contrib import admin
+
+from rest_framework.documentation import include_docs_urls
 
 from home.views import welcome
 
 
 urlpatterns = [
-    url(r'^home/', include('home.urls', namespace='home')),
-    url(r'^users/', include('users.urls', namespace='users')),
-    url(r'^feedback/', include('feedback.urls', namespace='feedback')),
-    url(r'^push/', include('push.urls', namespace='push')),
-    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^admin/', admin.site.urls),
-    url(r'^docs/', include('rest_framework_docs.urls')),
-    url(r'^$', welcome),
+    path('home/', include('home.urls')),
+    path('users/', include('users.urls')),
+    path('feedback/', include('feedback.urls')),
+    path('push/', include('push.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('admin/', admin.site.urls),
+    path('docs/', include_docs_urls(title='CSTHome API')),
+    path('', welcome),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

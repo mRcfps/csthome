@@ -1,20 +1,20 @@
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    url(
-        r'^login/$',
+    path(
+        'login/',
         views.UserLoginView.as_view(),
         name='login'
     ),
-    url(
-        r'^change-password/$',
+    path(
+        'change-password/',
         views.UserChangePasswordView.as_view(),
         name='change-password'
     ),
-    url(
-        r'^profile/$',
+    path(
+        'profile/',
         views.UserProfileView.as_view(),
         name='profile'
     ),

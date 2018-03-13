@@ -1,36 +1,35 @@
-from django.conf.urls import include, url
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    url(
-        r'^events/$',
+    path(
+        'events/',
         views.EventListView.as_view(),
         name='event-list'
     ),
-    url(
-        r'^events/(?P<pk>\d+)/$',
+    path(
+        'events/<int:pk>/',
         views.EventDetailView.as_view(),
         name='event-detail'
     ),
-    url(
-        r'^events/(?P<pk>\d+)/attend/$',
+    path(
+        'events/<int:pk>/attend/',
         views.AttendEventView.as_view(),
         name='attend-event'
     ),
-    url(
-        r'^news/$',
+    path(
+        'news/',
         views.NewsListView.as_view(),
         name='news-list'
     ),
-    url(
-        r'^news/(?P<pk>\d+)/$',
+    path(
+        'news/<int:pk>/',
         views.NewsDetailView.as_view(),
         name='news-detail'
     ),
-    url(
-        r'admin/event/(?P<event_id>\d+)/$',
+    path(
+        'admin/event/<int:pk>/',
         views.admin_event_attendance,
         name='admin-event-attendance'
     )
