@@ -12,4 +12,4 @@ ADD . /src/
 
 EXPOSE 8000
 
-CMD [ "./runserver.sh" ]
+CMD [ "./bin/runserver.sh" ]
