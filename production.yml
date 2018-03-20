@@ -1,0 +1,38 @@
+version: '2'
+
+volumes:
+  postgres_data: {}
+  postgres_backup: {}
+
+services:
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - postgres_backup:/backups
+    env_file:
+      - ./.envs/.production/.postgres
+
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/production/django/Dockerfile
+    depends_on:
+      - postgres
+    env_file:
+      - ./.envs/.production/.django
+      - ./.envs/.production/.postgres
+    command: /gunicorn.sh
+
+  proxy:
+    image: nginx:1.13
+    ports:
+      - "12138:80"
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+      - .:/app
+    depends_on:
+      - django
