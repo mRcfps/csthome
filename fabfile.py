@@ -5,23 +5,18 @@ from fabric.api import *
 env.hosts = ['root@60.205.183.134']
 
 
+def local_run():
+    try:
+        local("docker-compose -f local.yml up --build")
+    except KeyboardInterrupt:
+        local("docker-compose -f local.yml down")
+
+
 def deploy_with_private_key():
     with cd("csthome/"):
         run("git pull")
-        run("docker-compose build --no-cache")
-        run("docker-compose up --force-recreate")
-
-        # Keep trying until db is ready
-        while True:
-            with settings(warn_only=True):
-                result = run("docker exec csthome_web_1 python manage.py makemigrations")
-            if not result.failed:
-                # db is ready, so migrate and exit the loop
-                run("docker exec csthome_web_1 python manage.py migrate")
-                break
-            else:
-                # Sleep for a while and try again
-                run("sleep 3")
+        run("docker-compose -f production.yml build --no-cache")
+        run("docker-compose -f production.yml up --force-recreate")
 
 
 def deploy():
