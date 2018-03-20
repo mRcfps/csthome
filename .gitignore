@@ -22,6 +22,5 @@ htmlcov/
 # SSH private key
 pf.pem
 
-# db migrations
-*/migrations/*
-!*/migrations/__init__.py
+# Production environment
+.envs/.production
