@@ -1,6 +1,7 @@
 fabfile.py
 static/*
 media/*
+venv/*
 .coveragerc
 db.sqlite3
 *.pyc
