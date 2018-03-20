@@ -64,6 +64,8 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 LOCAL_APPS = [
     'csthome.users.apps.UsersConfig',
