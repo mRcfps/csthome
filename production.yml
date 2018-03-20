@@ -1,8 +1,10 @@
 version: '2'
 
 volumes:
-  postgres_data: {}
-  postgres_backup: {}
+  postgres_data:
+  postgres_backup:
+  django_static:
+  django_media:
 
 services:
 
@@ -22,6 +24,9 @@ services:
       dockerfile: ./compose/production/django/Dockerfile
     depends_on:
       - postgres
+    volumes:
+      - django_static:/app/static
+      - django_media:/app/csthome/media
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
@@ -33,6 +38,7 @@ services:
       - "12138:80"
     volumes:
       - ./config/nginx:/etc/nginx/conf.d
-      - .:/app
+      - django_static:/app/static
+      - django_media:/app/media
     depends_on:
       - django
