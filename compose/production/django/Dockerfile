@@ -3,8 +3,9 @@ FROM python:3.6
 ENV PYTHONUNBUFFERED 1
 
 # Requirements have to be pulled and installed here, otherwise caching won't work
-ADD ./requirements.txt /
-RUN pip install -i https://mirrors.aliyun.com/pypi/simple/ --no-cache-dir -r /requirements.txt
+COPY ./requirements /requirements
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple/ \
+    --no-cache-dir -r /requirements/production.txt
 
 COPY ./compose/production/django/gunicorn.sh /gunicorn.sh
 RUN sed -i 's/\r//' /gunicorn.sh

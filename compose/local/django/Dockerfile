@@ -3,8 +3,8 @@ FROM python:3.6
 ENV PYTHONUNBUFFERED 1
 
 # Requirements have to be pulled and installed here, otherwise caching won't work
-ADD ./requirements.txt /
-RUN pip install -i https://mirrors.aliyun.com/pypi/simple/ -r /requirements.txt
+COPY ./requirements /requirements
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple/ -r /requirements/local.txt
 
 COPY ./compose/production/django/entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r//' /entrypoint.sh
