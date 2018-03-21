@@ -15,8 +15,8 @@ def local_run():
 def deploy_with_private_key():
     with cd("csthome/"):
         run("git pull")
-        run("docker-compose -f production.yml build")
-        run("docker-compose -f production.yml up -d")
+        run("docker-compose -f production.yml down")
+        run("docker-compose -f production.yml up --build -d")
 
 
 def deploy():
