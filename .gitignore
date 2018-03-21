@@ -24,3 +24,6 @@ pf.pem
 
 # Production environment
 .envs/.production
+
+# Pytest cache
+.cache
