@@ -10,11 +10,11 @@ class Profile(models.Model):
     FEMALE = 'F'
     UNKNOWN = 'U'
 
-    SEX_CHOICES = {
+    SEX_CHOICES = (
         (MALE, '男'),
         (FEMALE, '女'),
         (UNKNOWN, '未选择'),
-    }
+    )
 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=10, blank=True, verbose_name='姓名')
