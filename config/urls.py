@@ -7,10 +7,10 @@ from home.views import welcome
 
 
 urlpatterns = [
-    path('home/', include('home.urls')),
-    path('users/', include('users.urls')),
-    path('feedback/', include('feedback.urls')),
-    path('push/', include('push.urls')),
+    path('home/', include('home.urls', namespace='home')),
+    path('users/', include('users.urls', namespace='users')),
+    path('feedback/', include('feedback.urls', namespace='feedback')),
+    path('push/', include('push.urls', namespace='push')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
     path('', welcome),
