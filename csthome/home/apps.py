@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class HomeConfig(AppConfig):
-    name = 'home'
+    name = 'csthome.home'
     verbose_name = '党国风采'
