@@ -27,3 +27,4 @@ pf.pem
 
 # Pytest cache
 .cache
+.pytest_cache
