@@ -1,26 +1,79 @@
 # CSTHome
 
-东华大学党员之家 APP 后端。
+Server-side codebase of DongHua University party building project.
 
-## 本地运行
+## Get Up and Running Locally
 
-确保已经配置好 docker。如果没有，其参考[这里](https://docs.docker.com/engine/installation/)。
+### Using Virtual Environment
+
+Make sure you have the following on your host:
+
+- python3
+- virtualenv
+- pip
+- PostgreSQL
+
+First things first.
+
+1. [Create a virtualenv](https://virtualenv.pypa.io/en/stable/userguide/).
+
+2. Activate the virtualenv you have just created (Here my virtualenv is named `venv`).
 
 ```bash
-$ docker-compose up --build
+$ source venv/bin/activate
 ```
 
-- 后台管理页面请访问 [http://localhost:12138/admin](http://localhost:12138/admin) 。
+3. Install development requirements:
 
-- API 文档请访问 [http://localhost:12138/docs](http://localhost:12138/docs) 。
+```bash
+(venv)$ pip install -r requirements/local.txt
+```
 
-## 远程部署
+4. Configure PostgreSQL:
 
-本项目使用的是 Fabric 进行自动化部署。先确保安装 Fabric (Python 2 的一个库），然后进入到项目根目录执行自动化任务。
+```
+$ psql
+psql=# CREATE USER csthome WITH PASSWORD 'csthome';
+psql=# CREATE DATABASE csthome OWNER csthome;
+psql=# ALTER USER csthome CREATEDB;
+psql=# GRANT ALL PRIVILEGES ON DATABASE csthome to csthome;
+```
+
+5. Apply migrations:
+
+```bash
+$ python manage.py migrate
+```
+
+6. See the application being served through Django development server:
+
+```bash
+$ python manage.py runserver
+```
+
+### Using Docker
+
+Install [Docker](https://docs.docker.com/install/#supported-platforms) and [Docker Compose](https://docs.docker.com/compose/install/), and run the following command:
+
+```bash
+$ docker-compose -f local.yml up --build
+```
+
+Or you can emulate **production** environment with `production.yml`:
+
+```bash
+$ docker-compose -f production.yml up --build
+```
+
+Whenever a switch is needed, just do it!
+
+## Deployment
+
+In this project we use **fabric** for automated deployment. Please note that **fabric** is only supported on Python 2 platform.
 
 ```bash
 $ pip install fabric
 $ fab deploy
 ```
 
-需要注意的是，如果没有云主机的私钥文件是无法进行远程登录的。
+You have to put RSA certificate within the project directory. Please contact mrc to get it.
