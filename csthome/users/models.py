@@ -32,8 +32,8 @@ class Profile(models.Model):
     college = models.CharField(max_length=50, blank=True, verbose_name='学院')
     major = models.CharField(max_length=50, blank=True, verbose_name='专业')
     organization = models.CharField(max_length=50, blank=True, verbose_name='党支部')
-    application_date = models.DateField(blank=True, verbose_name='申请入党时间')
-    join_date = models.DateField(blank=True, verbose_name='入党时间')
+    application_date = models.DateField(blank=True, null=True, verbose_name='申请入党时间')
+    join_date = models.DateField(blank=True, null=True, verbose_name='入党时间')
     avatar = models.ImageField(
         upload_to='users/avatars', blank=True, verbose_name='头像'
     )
