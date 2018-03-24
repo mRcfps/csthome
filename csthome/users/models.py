@@ -16,7 +16,11 @@ class Profile(models.Model):
         (UNKNOWN, '未选择'),
     )
 
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name='用户'
+    )
     full_name = models.CharField(max_length=10, blank=True, verbose_name='姓名')
     sex = models.CharField(
         max_length=1,
@@ -27,6 +31,9 @@ class Profile(models.Model):
     identity = models.CharField(max_length=50, blank=True, verbose_name='身份')
     college = models.CharField(max_length=50, blank=True, verbose_name='学院')
     major = models.CharField(max_length=50, blank=True, verbose_name='专业')
+    organization = models.CharField(max_length=50, blank=True, verbose_name='党支部')
+    application_date = models.DateField(blank=True, verbose_name='申请入党时间')
+    join_date = models.DateField(blank=True, verbose_name='入党时间')
     avatar = models.ImageField(
         upload_to='users/avatars', blank=True, verbose_name='头像'
     )
