@@ -66,6 +66,7 @@ THIRD_PARTY_APPS = [
     'rest_framework.authtoken',
     'ckeditor',
     'ckeditor_uploader',
+    'drf_yasg',
 ]
 LOCAL_APPS = [
     'csthome.users.apps.UsersConfig',
