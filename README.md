@@ -67,6 +67,10 @@ $ docker-compose -f production.yml up --build
 
 Whenever a switch is needed, just do it!
 
+## API Documentation
+
+API documentation is done by courtesy of [drf-yasg](https://github.com/axnsan12/drf-yasg). Visiting **<your_host>/redoc** or **<your_host>/swagger** is all you need.
+
 ## Deployment
 
 In this project we use **fabric** for automated deployment. Please note that **fabric** is only supported on Python 2 platform.
