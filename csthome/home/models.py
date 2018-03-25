@@ -1,6 +1,7 @@
-from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.db import models
+
+from ckeditor.fields import RichTextField
 
 
 class Event(models.Model):
@@ -8,7 +9,8 @@ class Event(models.Model):
 
     title = models.CharField(max_length=100, verbose_name='标题')
     photo = models.ImageField(upload_to='event', blank=True, verbose_name='照片')
-    body = RichTextField(verbose_name='正文')
+    body = RichTextField(blank=True, verbose_name='正文')
+    link = models.URLField(blank=True, verbose_name='链接')
     created = models.DateField(auto_now_add=True, verbose_name='创建时间')
     is_headline = models.BooleanField(default=False, verbose_name='是否需要首页轮播')
     is_active = models.BooleanField(default=False, verbose_name='是否需要签到')
@@ -17,7 +19,7 @@ class Event(models.Model):
     )
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('-created',)
         verbose_name = '活动'
         verbose_name_plural = verbose_name
 
@@ -30,11 +32,12 @@ class News(models.Model):
 
     title = models.CharField(max_length=100, verbose_name='标题')
     photo = models.ImageField(upload_to='news', blank=True, verbose_name='照片')
-    body = RichTextField(verbose_name='正文')
+    body = RichTextField(blank=True, verbose_name='正文')
+    link = models.URLField(blank=True, verbose_name='链接')
     created = models.DateField(auto_now_add=True, verbose_name='创建时间')
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('-created',)
         verbose_name = '新闻'
         verbose_name_plural = verbose_name
 
