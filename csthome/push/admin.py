@@ -15,11 +15,10 @@ def send_push_notification(obj):
 send_push_notification.allow_tags = True
 
 
+@admin.register(PushNotification)
 class PushNotificationAdmin(admin.ModelAdmin):
 
     list_display = ('content', 'created', 'has_pushed', send_push_notification)
     list_filter = ('created', 'has_pushed')
 
     send_push_notification.short_description = ''
-
-admin.site.register(PushNotification, PushNotificationAdmin)

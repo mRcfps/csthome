@@ -19,6 +19,7 @@ def view_attendance(obj):
         return None
 
 
+@admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
 
     list_display = ('title', 'created', 'is_active',
@@ -31,15 +32,13 @@ class EventAdmin(admin.ModelAdmin):
     view_attendance.short_description = ''
 
 
+@admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
 
     list_display = ('title', 'created')
     list_filter = ('created',)
     search_fields = ('title',)
 
-
-admin.site.register(Event, EventAdmin)
-admin.site.register(News, NewsAdmin)
 
 admin.site.site_header = 'CST党员之家'
 admin.site.site_title = '后台管理'
