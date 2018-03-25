@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
@@ -43,5 +44,5 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
     authentication_classes = (TokenAuthentication,)
 
     def get_object(self):
-        profile = Profile.objects.get_or_create(user=self.request.user)
+        Profile.objects.get_or_create(user=self.request.user)
         return self.request.user.profile

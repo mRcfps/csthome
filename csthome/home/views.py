@@ -25,7 +25,7 @@ def welcome(request):
 
 
 class EventListView(generics.ListAPIView):
-    """A view that lists all events."""
+    """Lists all events with page-number pagination."""
 
     serializer_class = EventListSerializer
 
@@ -47,7 +47,7 @@ class EventListView(generics.ListAPIView):
 
 
 class EventDetailView(generics.RetrieveAPIView):
-    """A view that display detailed info of an event."""
+    """Retrieve one single event by id."""
 
     queryset = Event.objects.all()
     serializer_class = EventDetailSerializer
@@ -70,14 +70,14 @@ class AttendEventView(APIView):
 
 
 class NewsListView(generics.ListAPIView):
-    """A view that lists all news."""
+    """Lists all news with page-number pagination."""
 
     queryset = News.objects.all()
     serializer_class = NewsListSerializer
 
 
 class NewsDetailView(generics.RetrieveAPIView):
-    """A view that display detailed info of an event."""
+    """Retrieve one single news by id."""
 
     queryset = News.objects.all()
     serializer_class = NewsDetailSerializer

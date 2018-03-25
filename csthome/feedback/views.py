@@ -5,7 +5,7 @@ from .serializers import FeedbackSerializer
 
 
 class FeedbackCreateView(generics.CreateAPIView):
-    """Users `POST` their feedbacks through this endpoint."""
+    """Create a new feedback."""
 
     queryset = Feedback.objects.all()
     serializer_class = FeedbackSerializer
