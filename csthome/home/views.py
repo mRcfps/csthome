@@ -2,15 +2,22 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
+
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Event, News
-from .serializers import (EventDetailSerializer, EventListSerializer,
-                          NewsDetailSerializer, NewsListSerializer)
+from .models import Event, News, Note
+from .serializers import (
+    EventDetailSerializer,
+    EventListSerializer,
+    NewsDetailSerializer,
+    NewsListSerializer,
+    NoteListSerializer,
+    NoteDetailSerializer,
+)
 
 
 def welcome(request):
@@ -80,6 +87,21 @@ class NewsDetailView(generics.RetrieveAPIView):
 
     def get_object(self):
         return News.objects.get(id=self.kwargs['pk'])
+
+
+class NoteListView(generics.ListAPIView):
+    """List all course notes."""
+
+    queryset = Note.objects.all()
+    serializer_class = NoteListSerializer
+    pagination_class = None
+
+
+class NoteDetailView(generics.RetrieveAPIView):
+    """Retrieve one single note by id."""
+
+    queryset = Note.objects.all()
+    serializer_class = NoteDetailSerializer
 
 
 @staff_member_required

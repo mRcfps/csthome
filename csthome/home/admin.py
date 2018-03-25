@@ -5,7 +5,7 @@ from django.utils.html import format_html
 
 from rest_framework.authtoken.models import Token
 
-from .models import Event, News
+from .models import Event, News, Note
 
 
 def view_attendance(obj):
@@ -37,6 +37,14 @@ class NewsAdmin(admin.ModelAdmin):
 
     list_display = ('title', 'created')
     list_filter = ('created',)
+    search_fields = ('title',)
+
+
+@admin.register(Note)
+class NoteAdmin(admin.ModelAdmin):
+
+    list_display = ('title', 'source', 'created')
+    list_filter = ('source', 'created')
     search_fields = ('title',)
 
 

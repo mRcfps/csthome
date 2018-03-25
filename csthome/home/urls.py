@@ -31,6 +31,16 @@ urlpatterns = [
         name='news-detail'
     ),
     path(
+        'notes/',
+        views.NoteListView.as_view(),
+        name='note-list'
+    ),
+    path(
+        'notes/<int:pk>/',
+        views.NoteDetailView.as_view(),
+        name='note-detail'
+    ),
+    path(
         'admin/event/<int:event_id>/',
         views.admin_event_attendance,
         name='admin-event-attendance'

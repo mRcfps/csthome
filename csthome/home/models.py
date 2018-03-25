@@ -43,3 +43,19 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Note(models.Model):
+
+    title = models.CharField(max_length=100, verbose_name='标题')
+    source = models.CharField(max_length=50, verbose_name='来源')
+    body = models.TextField(verbose_name='正文')
+    created = models.DateField(auto_now_add=True, verbose_name='创建时间')
+
+    class Meta:
+        ordering = ('-created',)
+        verbose_name = '党课记录'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.title
