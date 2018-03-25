@@ -52,9 +52,6 @@ class EventDetailView(generics.RetrieveAPIView):
     queryset = Event.objects.all()
     serializer_class = EventDetailSerializer
 
-    def get_object(self):
-        return Event.objects.get(id=self.kwargs['pk'])
-
 
 class AttendEventView(APIView):
     """`GET` this view and the user of this request will be added to
@@ -84,9 +81,6 @@ class NewsDetailView(generics.RetrieveAPIView):
 
     queryset = News.objects.all()
     serializer_class = NewsDetailSerializer
-
-    def get_object(self):
-        return News.objects.get(id=self.kwargs['pk'])
 
 
 class NoteListView(generics.ListAPIView):
