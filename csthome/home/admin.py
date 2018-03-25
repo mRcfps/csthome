@@ -1,6 +1,8 @@
 from django.contrib import admin
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group
 from django.urls import reverse
+from django.utils.html import format_html
+
 from rest_framework.authtoken.models import Token
 
 from .models import Event, News
@@ -8,14 +10,13 @@ from .models import Event, News
 
 def view_attendance(obj):
     if obj.is_active:
-        return '<a href="{}">查看签到情况</a>'.format(
+        return format_html(
+            '<a href="{}">查看签到情况</a>',
             reverse('home:admin-event-attendance', args=[obj.id])
         )
     else:
         # the event is not active
         return None
-
-view_attendance.allow_tags = True
 
 
 class EventAdmin(admin.ModelAdmin):

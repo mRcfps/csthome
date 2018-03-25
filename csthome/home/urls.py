@@ -31,7 +31,7 @@ urlpatterns = [
         name='news-detail'
     ),
     path(
-        'admin/event/<int:pk>/',
+        'admin/event/<int:event_id>/',
         views.admin_event_attendance,
         name='admin-event-attendance'
     )
