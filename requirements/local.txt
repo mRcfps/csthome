@@ -5,3 +5,5 @@ pytest-sugar==0.9.1  # https://github.com/Frozenball/pytest-sugar
 factory-boy==2.10.0  # https://github.com/FactoryBoy/factory_boy
 django-test-plus==1.0.22  # https://github.com/revsys/django-test-plus
 pytest-django==3.1.2  # https://github.com/pytest-dev/pytest-django
+
+flake8==3.5.0  # https://github.com/PyCQA/flake8
